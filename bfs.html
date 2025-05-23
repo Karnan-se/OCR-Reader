@@ -1,0 +1,58 @@
+<script>
+
+
+class Graph{
+    constructor() {
+        this.adjascentList ={}  
+    }
+  addVertex(vertex){
+    this.adjascentList[vertex] = (this.adjascentList[vertex] || [] )
+  }
+  addEdge(v1, v2){
+    this.addVertex(v1)
+    this.addVertex(v2)
+    this.adjascentList[v1].push(v2)
+    this.adjascentList[v2].push(v1)
+  }
+
+
+    
+}
+const graph = new Graph()
+graph.addEdge("a" , "b")
+graph.addEdge("b" , "c")
+graph.addEdge("c" , "a")
+graph.addEdge("d" , "e")
+graph.addEdge("f" , "a")
+
+
+function breadthFirstSearch(graph, node){
+    let quee = [node]
+    let visited = {}
+    
+
+    while(quee.length >0){
+       let ele =  quee.shift()
+       visited[ele] = true;
+       
+
+        for(let neighbours  of graph[ele]){
+            if(!visited[neighbours]){
+                visited[neighbours] = true
+                quee.push(neighbours)
+            }
+            
+
+
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+</script>
